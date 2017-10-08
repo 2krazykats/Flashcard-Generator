@@ -1,4 +1,7 @@
 function ClozeCard(text, cloze) {
+	if(!(this instanceof ClozeCard)) {
+		return new ClozeCard(text,cloze);
+	}
 	this.text = text;
 	this.cloze = cloze;	
 }
@@ -13,10 +16,10 @@ ClozeCard.prototype.fullText = function() {
 }
 
 ClozeCard.prototype.partial = function() {
-	try {
 	const replacedText = this.text.replace(this.cloze, "...");
+	if (this.text.includes(this.cloze) == true) {
 	console.log(replacedText);
-	} catch(err) {
+	} else {
 		console.log("This doesn't work");
 	}
 }
